@@ -1,0 +1,178 @@
+% \documentclass[handout]{beamer}
+\documentclass{beamer}
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+% \usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid} %TM
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+
+\beamertemplatenavigationsymbolsempty
+%\usetheme{CambridgeUS}
+%\usecolortheme[named=RoyalBlue]{structure}
+\usepackage[utf8]{inputenc} 
+%\usepackage[ngerman]{babel} 
+\usepackage{natbib}
+\usepackage{graphicx}
+%\usepackage{color}
+% For tables
+\usepackage{tabularx}
+\usepackage{multirow}
+
+
+%\usepackage{BeamerColor}
+
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\1}{\mathbb{1}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\iid}{\overset{\text{iid}}{\sim}}
+\newcommand{\SUM}{\sum_{i=1}^n}
+\newcommand{\PROD}{\prod_{i=1}^n}
+
+% \newcounter{saveenumi}
+% \newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+% \newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+% TODO decide on title
+% Orthogonal Projection Bootstrap
+% Componentwise Bootstrap
+\title[STATS 200C Project Presentation]{Metric Entropy}
+
+% decide on subtitle
+\subtitle{A Measured Approach to Chaos}
+
+\author[Huang, Kresin \& Maierhofer]{
+  Melody Huang, Conor Kresin \& Thomas Maierhofer\\
+  \vspace{0.5cm}
+  %Instructor: Prof.\ Chad Hazlett \\
+}
+
+\institute[]{Department of Statistics \\
+  University of California, Los Angeles}
+\date{May 4th, 2019}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{Table of Contents}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Table of Contents}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}{Table of Contents}
+  \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Background}
+\begin{frame} {Background}
+% very ugly thrown together
+    \begin{block}{$p$ Norms}
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    \end{block}
+    %
+    \begin{block}{Entropy}
+    \begin{itemize}
+        \item Shannon Entropy
+        \item R\'enyi Entropy
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{$p$ Norms}
+% show unit balls
+\begin{frame} {$p$ Norms}
+    Distance measure in 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Entropy}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Bibliography}
+\begin{frame}{Bibliography}
+  \bibliographystyle{dcu} 
+  \small{\bibliography{bibliography.bib}}
+\end{frame}
+
+\nocite{maierhoferCoFD}
+
+\end{document}
