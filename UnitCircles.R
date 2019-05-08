@@ -60,7 +60,7 @@ unit_balls = data.frame(x0 = x0, y0 = y0,
                         sep = rep(1:4, each = 50))
 
 library(ggplot2)
-width = 7
+width = 4
 
 # zero norm
 ggplot(unit_balls) +
