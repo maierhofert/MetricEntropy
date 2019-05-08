@@ -74,9 +74,9 @@
     %----------------------------------------------------------------------------------------
 
     \HRule \\[0.4cm]
-    { \huge \bfseries Principal-Component-Wise Bootstrap}\\[0.2cm] % Title of your document
+    { \huge \bfseries Metric Entropy}\\[0.2cm] % Title of your document
     \HRule \\[0.4cm]
-    \textsc{\large An Orthogonal Spin on the Classic}\\[2.0 cm]
+    \textsc{\large Subtitle}\\[2.0 cm]
  
     %----------------------------------------------------------------------------------------
     %	AUTHOR SECTION
@@ -86,16 +86,18 @@
     \begin{minipage}{0.4\textwidth}
     \begin{flushleft} \large
     \emph{Authors:}\\
-        Harrison \textsc{Katz} \\
+        Melody \textsc{Huang} \\
+        Conor \textsc{Kresin} \\
         Thomas \textsc{Maierhofer} % Your name
     \end{flushleft}
     \end{minipage}
     ~
     \begin{minipage}{0.4\textwidth}
     \begin{flushright} \large
-    \emph{Stats 201B:} \\
-    Winter Quarter 2019,
-    Prof. Chad Hazlett % Supervisor's Name
+    \emph{Stats 200C:} \\
+    Spring Quarter 2019, \\
+    Prof. Arash Amini \\ % Supervisor's Name 
+    \text{ }
     \end{flushright}
     \end{minipage}\\[2cm]
     
@@ -126,31 +128,84 @@ TODO
 \pagenumbering{arabic}
 
 \section{Background}
+
 \subsection{$p$ Norms for Vectors}
 This section formally introduces $p$ norms with a focus on the special cases $ p = 0, 1, 2, \infty$.
 The $p$ norm of a vector $x \in \R^d$ is denoted as $||x||_p$ and defined as
 $$||x||_p = \left(\sum_{i = 1}^d |x_i|^p \right)^{1/p},$$
-where $|x_i| = \text{sign}(x_i)x_i$ denotes the absolute value. In literature $p$ norms are often denoted as $l_p$ norms.
-
-The most important special cases is the $2$ norm, a.k.a.\ Euclidean norm. It is defined as
-$$||x||_2 = \sqrt{\sum_{i = 1}^d x_i^2}.$$
-Other important cases include the $0$ norm,
+where $|x_i| = \text{sign}(x_i)x_i$ denotes the absolute value.
+%
+The most important special cases include the $0$ norm is which counting the non-zero entries in $x$,
 $$||x||_0 = \sum_{i = 1}^d \1\{x_i \neq 0\},$$
-the $1$ norm, a.k.a.\ Manhattan norm,
+the $1$ norm, a.k.a.\ city-block norm,
 $$||x||_1 = \sum_{i = 1}^d |x_i|,$$
+the $2$ norm, a.k.a.\ Euclidean norm,
+$$||x||_2 = \sqrt{\sum_{i = 1}^d x_i^2},$$
 and the $\infty$ norm, a.k.a. maximum norm,
 $$||x||_\infty = \max_{i = 1, \ldots, d} |x_i|.$$
 
-A unit ball for a norm $||\cdot||$ contains all points with distance $1$ around the origin, i.e. all points $\{x: ||x|| = 0\}$. The unit balls for the $1, 2,$ and $\infty$ norm in $\R^2$ are depicted in Figure~\ref{fig:input}.
+A unit ball for a norm $||\cdot||$ contains all points with distance $1$ around the origin, i.e. all points $\{x: ||x|| = 0\}$. The unit balls for the $0, 1, 2,$ and $\infty$ norm in $\R^2$ are depicted in Figure~\ref{fig:input}. Note that the volume of the unit balls increases in $p$.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.49\textwidth]{plots/unit_circle_0.pdf}
     \includegraphics[width=0.49\textwidth]{plots/unit_circle_1.pdf}
     \includegraphics[width=0.49\textwidth]{plots/unit_circle_2.pdf}
     \includegraphics[width=0.49\textwidth]{plots/unit_circle_inf.pdf}
-    \caption{Unit balls in $\R^2$ of the $l_0$ (topleft), $l_1$ (topright), $l_2$ (bottom left), an $l_\infty$ norm (bottom right).}
+    \caption{Unit balls in $\R^2$ of the $0$ (top left), $1$ (top right), $2$ (bottom left), an $\infty$ norm (bottom right).}
     \label{fig:input}
 \end{figure}
+
+
+\subsection{Entropy}
+Entropy measures how far from deterministic a random variable is, i.e. entropy quantifies a random variables diversity, uncertainty or randomness. 
+A random variable with entropy zero is deterministic, an increasing value  means that it is more and more unpredictable.
+    
+\subsubsection{Shannon Entropy}
+Let $ X $ be a discrete random variable taking values in the set $ \{x = x_1, x_2, \ldots, x_n \} $ with probabilities $ \{p = p_1, p_2, \ldots, p_n \} $. The Shannon entropy $ H(X) $ is defined as 
+
+\begin{equation}\label{Shannon1}
+    H(X) = H_1(X) = - \sum_{i = 1} ^ n p_i \log_2 p_i,
+\end{equation}
+and obtains its maximum value for the uniform distribution
+$$p_i = \frac{1}{n} \forall i.$$
+Considerations of continuity lead to the adoption of the convention, $ 0 \log 0  = 0 $.
+
+
+
+\subsubsection{R\'enyi Entropy}
+The R\'enyi entropy of order $ q $, $ q  \geq 0 $ and $ q \neq 1 $, of a discrete random variable $ X $ taking $ n $ values with probabilities $ p_1, \ldots, p_n $, is defined as,
+\begin{equation}
+        H_q(X) = 
+        \frac{1}{1 - q} \log \left( \sum_{i=1}^n p_i ^ {q} \right)
+        = \frac{1}{1 - q} \log \| p \|_q^q,  
+\end{equation}
+using the $ p $-norm of order $ q $ of $ x  \in \R ^ n $  which is defined as   
+$$ \| x \|_q = \left( \sum_{i=1}^n |x_i|^q \right)^{1/q}, \textrm{ for } q \geq 1 \in \R. $$
+
+The most important special cases are $q = 0$ (count norm) for the max-entropy,
+$$ 
+H_0(X) = \lim_{q \to 0} \frac{1}{1 - q} \log \| p \|_q^q =  \log |X|,
+$$
+which is the logarithm of the cardinality of $X$,
+$ q = 1 $ (Manhattan norm) for the Shannon entropy \footnote{or more precisely $\lim_{q \to 1} H_q(X) = H(X)$}, see Equation~\eqref{Shannon1},  $ q = 2 $ (Euclidean norm)  for the quadratic entropy or collision entropy, 
+$$ 
+H_2(X) = \frac{1}{1 - 2} \log \| p \|_2^2 = \log \sum_{i} p_i^2,
+$$
+and $q = \infty$ (maximum norm) used in the Min entropy,
+$$ 
+H_\infty(X) = \lim_{q \to \infty} \frac{1}{1 - q} \log \| p \|_q^q = \log \max_{i} p_i,
+$$
+This means that the parameter $ q $ changes the way the shape of the distribution influences the entropy by designating the norm being used. Different parameters $q$ make the Re\'enyi entropy more or less sensitive to certain characteristics of the probability distributions.
+Note that the R\'enyi  entropy is monotonically decreasing in $q$, as the $q$ norms are monotonically decreasing and the $\log$ is a monotonic transformation. 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Metric Entropy}
+Metric entropy quantifies the size of a set $T$. This task is superficially unrelated to the concept of entropy, but after closer inspections similarities apparent.
+
+\subsection{Covering and Packing}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
