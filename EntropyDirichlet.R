@@ -56,7 +56,7 @@ ggplot(data = density_data) +
   geom_contour(aes(x = x1, y = x2, z = z), color = "black") +
   theme_classic() + 
   coord_fixed()
-ggsave("plots/dirichlet_density.pdf", width = 1.5 * width, height = 0.9 * width)
+ggsave("plots/dirichlet_density.pdf", width = width, height = 0.9 * width)
 
 ###########################################################################################
 # set seed 1234
@@ -67,7 +67,7 @@ colnames(dir_data) = c("x1", "x2", "x3")
 ggplot(data = dir_data, aes(x = x1, y = x2)) +
   geom_point() + 
   coord_fixed()
-ggsave("plots/dirichlet_sample.pdf", width = 1.5*width, height = 0.9 * width)
+ggsave("plots/dirichlet_sample.pdf", width = width, height = 0.9 * width)
 
 
 library("ggforce")
