@@ -147,10 +147,10 @@ $$||x||_\infty = \max_{i = 1, \ldots, d} |x_i|.$$
 A unit ball for a norm $||\cdot||$ contains all points with distance $1$ around the origin, i.e. all points $\{x: ||x|| = 0\}$. The unit balls for the $0, 1, 2,$ and $\infty$ norm in $\R^2$ are depicted in Figure~\ref{fig:input}. Note that the volume of the unit balls increases in $p$.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.49\textwidth]{plots/unit_circle_0.pdf}
-    \includegraphics[width=0.49\textwidth]{plots/unit_circle_1.pdf}
-    \includegraphics[width=0.49\textwidth]{plots/unit_circle_2.pdf}
-    \includegraphics[width=0.49\textwidth]{plots/unit_circle_inf.pdf}
+    \includegraphics[width=0.45\textwidth]{plots/unit_circle_0.pdf}
+    \includegraphics[width=0.45\textwidth]{plots/unit_circle_1.pdf}
+    \includegraphics[width=0.45\textwidth]{plots/unit_circle_2.pdf}
+    \includegraphics[width=0.45\textwidth]{plots/unit_circle_inf.pdf}
     \caption{Unit balls in $\R^2$ of the $0$ (top left), $1$ (top right), $2$ (bottom left), an $\infty$ norm (bottom right).}
     \label{fig:input}
 \end{figure}
@@ -159,7 +159,7 @@ A unit ball for a norm $||\cdot||$ contains all points with distance $1$ around 
 \subsection{Entropy}
 Entropy measures how far from deterministic a random variable is, i.e. entropy quantifies a random variables diversity, uncertainty or randomness. 
 A random variable with entropy zero is deterministic, an increasing value  means that it is more and more unpredictable.
-This section introduces the Shannon entropy and R\'enyi entropy for discrete random variables, the case of continuous random variables follows directly by replacing sums with intergrals.
+This section introduces the Shannon entropy \citep{shannon} and R\'enyi entropy \citep{renyi1961measures} for discrete random variables, the case of continuous random variables follows directly by replacing sums with intergrals.
     
 \subsubsection{Shannon Entropy}
 Let $ X $ be a discrete random variable taking values in the set $ \{x = x_1, x_2, \ldots, x_n \} $ with probabilities $ \{p = p_1, p_2, \ldots, p_n \} $. The Shannon entropy $ H(X) $ is defined as 
@@ -201,7 +201,7 @@ Note that the R\'enyi  entropy is monotonically decreasing in $q$, as the $q$ no
 The R\'enyi entropy of a $3$ dimensional Dirichlet with parameter $\alpha$ distributed random variable $X$ is given as
 $$H_q(X) = \frac{1}{1 - q} \log(\frac{\Gamma^q(\alpha_1 + \alpha_2 + \alpha_3) \Gamma(q \alpha_1 - q + 1) \Gamma(q \alpha_2 - q + 1) \Gamma(q \alpha_3 - q + 1)}{\Gamma(q (\alpha_1 + \alpha_2 + \alpha_3 - 3) + 3) (\Gamma(\alpha_1) \Gamma(\alpha_2) \Gamma(\alpha_3))^q}).$$
 
-For a given $\alpha \in \R^3,$ the Dirichlet distribution defines a distribution on $\R^2,$ as $\sum_{i = 1}^3 x_i = 1$. The distribution for $\alpha = (3, 5, 3)$ is visualized in Figure~\ref{dir_dist}.
+For a given $\alpha \in \R^3,$ the Dirichlet distribution defines a distribution on $\R^2,$ as $\sum_{i = 1}^3 x_i = 1$. The distribution for $\alpha = (3, 5, 3)$ is visualized in Figure~\ref{fig:dir_dist}.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.49\textwidth]{plots/dirichlet_density.pdf}
@@ -213,7 +213,7 @@ For a given $\alpha \in \R^3,$ the Dirichlet distribution defines a distribution
 
 Using this formula, we can compute the R\'enyi entropy for a given parameter $q$ in Table~\ref{tab:renyi_ent}. Note that the R\'enyi entropy $H_q$ of any random variable is monotonically decreasing in $q$.
 
-\begin{table}[]
+\begin{table}[ht]
 \caption{R\'enyi of a 3 dimensional Dirichlet with parameter $\alpha = (3, 5, 3)$ distributed random variable for varying $q$. }
 \begin{tabular}{l|lllllll}
 q    & 0.01   & 0.5    & 0.99                       & 1      & 1.01   & 2      & 10     \\ \hline
@@ -222,6 +222,7 @@ $H_q$ & -0.714 & -1.232 & \multicolumn{1}{r}{-1.439} & -1.442 & -1.445 & -1.645 
 \label{tab:renyi_ent}
 \end{table}
 
+\FloatBarrier
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Metric Entropy}
@@ -249,7 +250,6 @@ Consider the random sample of a Dirichlet with $\alpha = (3, 5, 3)$ distributed 
 \clearpage
 \bibliographystyle{dcu} 
 {\bibliography{bibliography.bib}}
-\nocite{maierhoferCoFD}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % appendix
