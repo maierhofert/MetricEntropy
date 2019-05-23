@@ -159,6 +159,7 @@ A unit ball for a norm $||\cdot||$ contains all points with distance $1$ around 
 \subsection{Entropy}
 Entropy measures how far from deterministic a random variable is, i.e. entropy quantifies a random variables diversity, uncertainty or randomness. 
 A random variable with entropy zero is deterministic, an increasing value  means that it is more and more unpredictable.
+This section introduces the Shannon entropy and R\'enyi entropy for discrete random variables, the case of continuous random variables follows directly by replacing sums with intergrals.
     
 \subsubsection{Shannon Entropy}
 Let $ X $ be a discrete random variable taking values in the set $ \{x = x_1, x_2, \ldots, x_n \} $ with probabilities $ \{p = p_1, p_2, \ldots, p_n \} $. The Shannon entropy $ H(X) $ is defined as 
@@ -169,8 +170,6 @@ Let $ X $ be a discrete random variable taking values in the set $ \{x = x_1, x_
 and obtains its maximum value for the uniform distribution
 $$p_i = \frac{1}{n} \forall i.$$
 Considerations of continuity lead to the adoption of the convention, $ 0 \log 0  = 0 $.
-
-
 
 \subsubsection{R\'enyi Entropy}
 The R\'enyi entropy of order $ q $, $ q  \geq 0 $ and $ q \neq 1 $, of a discrete random variable $ X $ taking $ n $ values with probabilities $ p_1, \ldots, p_n $, is defined as,
@@ -195,15 +194,31 @@ and $q = \infty$ (maximum norm) used in the Min entropy,
 $$ 
 H_\infty(X) = \lim_{q \to \infty} \frac{1}{1 - q} \log \| p \|_q^q = \log \max_{i} p_i,
 $$
-This means that the parameter $ q $ changes the way the shape of the distribution influences the entropy by designating the norm being used. Different parameters $q$ make the Re\'enyi entropy more or less sensitive to certain characteristics of the probability distributions.
+This means that the parameter $ q $ changes the way the shape of the distribution influences the entropy by designating the norm being used. Different parameters $q$ make the R\'enyi entropy more or less sensitive to certain characteristics of the probability distributions.
 Note that the R\'enyi  entropy is monotonically decreasing in $q$, as the $q$ norms are monotonically decreasing and the $\log$ is a monotonic transformation. 
 
+\subsection{Example: R\'enyi Entropy of Dirichlet distribution}
+The R\'enyi entropy of a $3$ dimensional Dirichlet with parameter $\alpha$ distributed random variable $X$ is given as
+$$H_q(X) = \frac{1}{1 - q} \log(\frac{\Gamma^q(\alpha_1 + \alpha_2 + \alpha_3) \Gamma(q \alpha_1 - q + 1) \Gamma(q \alpha_2 - q + 1) \Gamma(q \alpha_3 - q + 1)}{\Gamma(q (\alpha_1 + \alpha_2 + \alpha_3 - 3) + 3) (\Gamma(\alpha_1) \Gamma(\alpha_2) \Gamma(\alpha_3))^q}).$$
 
+For a given $\alpha \in \R^3,$ the Dirichlet distribution defines a distribution on $\R^2,$ as $\sum_{i = 1}^3 x_i = 1$. The distribution for $\alpha = (3, 5, 3)$ is visualized in Figure~\ref{dir_dist}.
+
+
+
+Using this formula, we can compute the R\'enyi entropy for a given parameter $q$ in Table~\ref{tab:renyi_ent}.
+\begin{table}[]
+\caption{R\'enyi of a 3 dimensional Dirichlet with parameter $\alpha = (3, 5, 3)$ distributed random variable for varying $q$.}
+\begin{tabular}{l|lllllll}
+q    & 0.01   & 0.5    & 0.99                       & 1      & 1.01   & 2      & 10     \\ \hline
+$H_q$ & -0.714 & -1.232 & \multicolumn{1}{r}{-1.439} & -1.442 & -1.445 & -1.645 & -1.991
+\end{tabular}
+\label{tab:renyi_ent}
+\end{table}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Metric Entropy}
-Metric entropy quantifies the size of a set $T$. This task is superficially unrelated to the concept of entropy, but after closer inspections similarities apparent.
+Metric entropy quantifies the size of a set $T$. This task is superficially unrelated to the concept of entropy, but after closer inspections similarities become apparent.
 
 \subsection{Covering and Packing}
 
