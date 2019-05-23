@@ -66,7 +66,7 @@ dir_data = rdirichlet(n = 30, alpha = alpha) %>% as.data.frame()
 colnames(dir_data) = c("x1", "x2", "x3")
 ggplot(data = dir_data, aes(x = x1, y = x2)) +
   geom_point() + 
-  coord_fixed()
+  coord_fixed(xlim = c(0, 1), ylim = c(0, 1))
 ggsave("plots/dirichlet_sample.pdf", width = width, height = 0.9 * width)
 
 
