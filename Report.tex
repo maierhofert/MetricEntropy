@@ -197,17 +197,24 @@ $$
 This means that the parameter $ q $ changes the way the shape of the distribution influences the entropy by designating the norm being used. Different parameters $q$ make the R\'enyi entropy more or less sensitive to certain characteristics of the probability distributions.
 Note that the R\'enyi  entropy is monotonically decreasing in $q$, as the $q$ norms are monotonically decreasing and the $\log$ is a monotonic transformation. 
 
-\subsection{Example: R\'enyi Entropy of Dirichlet distribution}
+\subsection{Example: R\'enyi Entropy of Dirichlet distribution}\label{ex:dirichlet_entropy}
 The R\'enyi entropy of a $3$ dimensional Dirichlet with parameter $\alpha$ distributed random variable $X$ is given as
 $$H_q(X) = \frac{1}{1 - q} \log(\frac{\Gamma^q(\alpha_1 + \alpha_2 + \alpha_3) \Gamma(q \alpha_1 - q + 1) \Gamma(q \alpha_2 - q + 1) \Gamma(q \alpha_3 - q + 1)}{\Gamma(q (\alpha_1 + \alpha_2 + \alpha_3 - 3) + 3) (\Gamma(\alpha_1) \Gamma(\alpha_2) \Gamma(\alpha_3))^q}).$$
 
 For a given $\alpha \in \R^3,$ the Dirichlet distribution defines a distribution on $\R^2,$ as $\sum_{i = 1}^3 x_i = 1$. The distribution for $\alpha = (3, 5, 3)$ is visualized in Figure~\ref{dir_dist}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.49\textwidth]{plots/dirichlet_density.pdf}
+    \includegraphics[width=0.49\textwidth]{plots/dirichlet_sample.pdf}
+    \caption{Density and random sample of a Dirichlet distribution with parameter $\alpha = (3, 5, 3)$.}
+    \label{fig:dir_dist}
+\end{figure}
 
 
+Using this formula, we can compute the R\'enyi entropy for a given parameter $q$ in Table~\ref{tab:renyi_ent}. Note that the R\'enyi entropy $H_q$ of any random variable is monotonically decreasing in $q$.
 
-Using this formula, we can compute the R\'enyi entropy for a given parameter $q$ in Table~\ref{tab:renyi_ent}.
 \begin{table}[]
-\caption{R\'enyi of a 3 dimensional Dirichlet with parameter $\alpha = (3, 5, 3)$ distributed random variable for varying $q$.}
+\caption{R\'enyi of a 3 dimensional Dirichlet with parameter $\alpha = (3, 5, 3)$ distributed random variable for varying $q$. }
 \begin{tabular}{l|lllllll}
 q    & 0.01   & 0.5    & 0.99                       & 1      & 1.01   & 2      & 10     \\ \hline
 $H_q$ & -0.714 & -1.232 & \multicolumn{1}{r}{-1.439} & -1.442 & -1.445 & -1.645 & -1.991
@@ -219,8 +226,23 @@ $H_q$ & -0.714 & -1.232 & \multicolumn{1}{r}{-1.439} & -1.442 & -1.445 & -1.645 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Metric Entropy}
 Metric entropy quantifies the size of a set $T$. This task is superficially unrelated to the concept of entropy, but after closer inspections similarities become apparent.
+Section~\ref{covering_packing} introduces the concept of covering and packing and formally introduces the concept of metric entropy.
 
-\subsection{Covering and Packing}
+\subsection{Covering and Packing}\label{covering_packing}
+
+
+\subsection{Example: Metric entropy of Dirichlet sample}
+Consider the random sample of a Dirichlet with $\alpha = (3, 5, 3)$ distributed random variable from Example~\ref{ex:dirichlet_entropy}. Applying the concept of covering to this set, covering numbers for different $l_q$ norms can be obtained, see Figure~\ref{fig:dir_met_ent}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.32\textwidth]{plots/l0_covering.pdf}
+    \includegraphics[width=0.32\textwidth]{plots/l1_covering.pdf}
+    \includegraphics[width=0.32\textwidth]{plots/l2_covering.pdf}
+    \caption{Covering of the sample drawn in Example~\ref{ex:dirichlet_entropy} (Dirichlet distributed, n = 30). Using $\epsilon = 0.1$ balls of the $l_q$ norm, the covering numbers are $30, 12, 9,$ for q = $0, 1, 2$ respectively. Note that these numbers (and their logarithm) are monotonically decreasing in $q$.}
+    \label{fig:dir_met_ent}
+\end{figure}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
