@@ -55,7 +55,7 @@ ggplot(data = density_data) +
   scale_fill_gradient2("Density", low = "white", high = "dodgerblue4") + 
   geom_contour(aes(x = x1, y = x2, z = z), color = "black") +
   theme_classic() + 
-  coord_fixed()
+  coord_fixed(xlim = c(0, 1), ylim = c(0, 1))
 ggsave("plots/dirichlet_density.pdf", width = width, height = 0.9 * width)
 
 ###########################################################################################
@@ -85,7 +85,7 @@ ggplot() +
   geom_circle(aes(x0 = x1, y0 = x2, r = r), 
               color = "dodgerblue4", alpha = 0.5,
               data = filter(dir_data, selected)) +
-  coord_fixed()
+  coord_fixed(xlim = c(-0.05, 0.75), ylim = c(0, 0.75))
 ggsave("plots/l2_covering.pdf", width = width, height = 0.9 * width)
 
 
@@ -99,7 +99,7 @@ ggplot() +
   geom_circle(aes(x0 = x1, y0 = x2, r = r), n = 4, 
               color = "dodgerblue4", alpha = 0.5,
               data = filter(dir_data, selected)) +
-  coord_fixed()
+  coord_fixed(xlim = c(-0.05, 0.75), ylim = c(0, 0.75))
 ggsave("plots/l1_covering.pdf", width = width, height = 0.9 * width)
 
 
@@ -108,7 +108,7 @@ ggplot(data = dir_data) +
   geom_hline(aes(yintercept = x2), color = "dodgerblue4", alpha = 0.5) +
   geom_vline(aes(xintercept = x1), color = "dodgerblue4", alpha = 0.5) + 
   geom_point(aes(x = x1, y = x2), size = 2) +
-  coord_fixed()
+  coord_fixed(xlim = c(-0.05, 0.75), ylim = c(0, 0.75))
 ggsave("plots/l0_covering.pdf", width = width, height = 0.9 * width)
 
 
